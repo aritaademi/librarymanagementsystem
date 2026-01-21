@@ -12,6 +12,7 @@ The system follows a layered architecture:
 🧱 Architecture Overview
 
 Controller → Service → Repository → Database
+
 Controllers handle HTTP requests and responses
 Services contain all business logic
 Repositories interact with the database using Spring Data JPA
