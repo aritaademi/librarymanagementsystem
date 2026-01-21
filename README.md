@@ -185,6 +185,6 @@ Examples:
  - JUnit 5
  - MockMvc
  - Jackson
-DTOs decouple API requests from entity models
+
 
 Entities represent database tables
