@@ -101,5 +101,21 @@ public class LoanService {
         }
         return 0;
     }
+
+    public List<Book> getBorrowedBooksByMember(Integer memberId) {
+
+        //  verify member exists
+        memberRepository.findById(memberId)
+                .orElseThrow(() -> new ResourceNotFoundException("Member not found"));
+
+        // Get active loans for this member
+        List<Loan> loans = loanRepository
+                .findByMemberIdAndReturnDateIsNull(memberId); //Fetches only borrowed books
+
+        // Convert loans → books
+        return loans.stream()
+                .map(Loan::getBook) //Extracts the Book from each Loan
+                .toList();
+    }
 }
 

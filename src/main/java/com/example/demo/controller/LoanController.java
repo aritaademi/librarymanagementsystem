@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.pojo.dto.BorrowBookRequest;
+import com.example.demo.pojo.entity.Book;
 import com.example.demo.pojo.entity.Loan;
 import com.example.demo.service.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,13 @@ public class LoanController {
     @GetMapping
     public List<Loan> getAllLoans() {
         return loanService.getAllLoans();
+    }
+
+    @GetMapping("/member/{memberId}")
+    public List<Book> getBorrowedBooksByMember(
+            @PathVariable Integer memberId) {
+
+        return loanService.getBorrowedBooksByMember(memberId);
     }
 
 
